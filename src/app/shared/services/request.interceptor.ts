@@ -7,7 +7,8 @@ import {
   HttpHeaders
 } from '@angular/common/http';
 import { delay, map, Observable } from 'rxjs';
-import { SpinnerService } from './spinner/spinner.service';
+import { SpinnerService } from '../components/spinner/spinner.service';
+
 
 @Injectable()
 export class RequestInterceptor implements HttpInterceptor {

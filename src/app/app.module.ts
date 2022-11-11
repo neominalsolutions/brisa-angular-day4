@@ -6,12 +6,13 @@ import { AppComponent } from './app.component';
 import {MegaMenuModule} from 'primeng/megamenu';
 import {ButtonModule} from 'primeng/button';
 import {BadgeModule} from 'primeng/badge';
-import { ItalicTextDirective } from './italic-text.directive';
-import { BoldTextDirective } from './bold-text.directive';
-import { SpinnerComponent } from './spinner/spinner.component';
+import { ItalicTextDirective } from './shared/directives/italic-text.directive';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
-import { RequestInterceptor } from './request.interceptor';
-import { HomeComponent } from './home/home.component';
+import { RequestInterceptor } from './shared/services/request.interceptor';
+import { SpinnerComponent } from './shared/components/spinner/spinner.component';
+import { HomeComponent } from './admin/pages/home/home.component';
+import { BoldTextDirective } from './shared/directives/bold-text.directive';
+
 
 // Directive,Component ve Pipe declarion kısmında tanımlanırlar.
 

@@ -1,8 +1,9 @@
 import { Component, ElementRef, OnInit, TemplateRef, ViewChild } from '@angular/core';
 import { Button } from 'primeng/button';
 import {HttpClient} from '@angular/common/http';
-import { SpinnerService } from './spinner/spinner.service';
 import { debounce, debounceTime, delay, map } from 'rxjs';
+import { User } from './admin/models/user';
+import { SpinnerService } from './shared/components/spinner/spinner.service';
 
 @Component({
   selector: 'app-root',
@@ -127,6 +128,12 @@ export class AppComponent implements OnInit {
  
   constructor(private http:HttpClient, private spinner:SpinnerService) {
   }
+
+  user:User = {
+    name:'ali',
+    surname:'Tan',
+    email:'ali.tan@gmail.com'
+  };
 
   ngOnInit(): void {
     // this.spinner.show();
