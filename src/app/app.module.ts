@@ -8,6 +8,10 @@ import {ButtonModule} from 'primeng/button';
 import {BadgeModule} from 'primeng/badge';
 import { ItalicTextDirective } from './italic-text.directive';
 import { BoldTextDirective } from './bold-text.directive';
+import { SpinnerComponent } from './spinner/spinner.component';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+import { RequestInterceptor } from './request.interceptor';
+import { HomeComponent } from './home/home.component';
 
 // Directive,Component ve Pipe declarion kısmında tanımlanırlar.
 
@@ -15,16 +19,23 @@ import { BoldTextDirective } from './bold-text.directive';
   declarations: [
     AppComponent,
     ItalicTextDirective,
-    BoldTextDirective
+    BoldTextDirective,
+    SpinnerComponent,
+    HomeComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     MegaMenuModule,
     ButtonModule,
-    BadgeModule
+    BadgeModule,
+    HttpClientModule
   ],
-  providers: [],
+  providers: [
+    {
+      provide: HTTP_INTERCEPTORS, useClass: RequestInterceptor, multi: true
+    }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

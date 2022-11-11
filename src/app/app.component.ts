@@ -1,12 +1,15 @@
-import { Component, ElementRef, TemplateRef, ViewChild } from '@angular/core';
+import { Component, ElementRef, OnInit, TemplateRef, ViewChild } from '@angular/core';
 import { Button } from 'primeng/button';
+import {HttpClient} from '@angular/common/http';
+import { SpinnerService } from './spinner/spinner.service';
+import { debounce, debounceTime, delay, map } from 'rxjs';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss']
 })
-export class AppComponent {
+export class AppComponent implements OnInit {
   title = 'Day4';
   items:any = [
     {
@@ -120,6 +123,19 @@ export class AppComponent {
       ]
     }
   ]
+
+ 
+  constructor(private http:HttpClient, private spinner:SpinnerService) {
+  }
+
+  ngOnInit(): void {
+    // this.spinner.show();
+
+    this.http.get('https://jsonplaceholder.typicode.com/todos').subscribe((data => {
+      console.log('data', data);
+      // this.spinner.hide();
+    }))
+  }
 
   clickMe(){
     alert('clicked');
